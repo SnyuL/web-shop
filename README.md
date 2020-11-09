@@ -1,24 +1,40 @@
-# web-shop
+### 表单校验
+rules属性绑定
+data中定义规则
+表单item上prop属性绑定
+注意点： prop的值和规则的值以及表单的值需要保持一致
 
-## Project setup
-```
-npm install
-```
+在vue中如何获取dom元素
+- #### 定义属性
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<div ref='qqq' @click="btn">111111</div>
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- ### 获取：this.$refs.qqq
+如何携带token
+登录成功的时候将获取的token做本地缓存
+需要做请求拦截====其他所有请求需要携带请求头 Authorization
+api/index.js
+做请求拦截 获取本地缓存
+将本都缓存的值添加到请求头上面去
+左侧菜单数据展示
++ 封装函数  ===获取左侧菜单数据请求的函数    api/index.js
++ home.vue
+    + 导入封装请求函数
+    + 调用这个函数获取数据，并且将数据 赋值给data中的menuList
+    + 将数据循环出来 ====进行2层循环
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 步骤分析：
++ 静态组件布局编写===从官网复制过来
++ 动态渲染左侧菜单导航===将获取的请求数据使用循环
++ 配置属性默认值展开一个  ====查看官网配置属性
++ 配置路由实现显示对应的组件
+做菜菜单导航图标的显示
+引入iconfont.css文件 main.js中引入
+一级图标
+准备一个对象或者数组 iconObj: { 0: 'icon-user', 1: 'icon-tijikongjian', 2: 'icon-shangpin', 3: 'icon-danju', 4: 'icon-baobiao' }
+图标标签属性绑定 class 然后根据索引找到对象中的哪一个类名进行显示
+二级图标====直接在二级循环标题前面提加图标标签====写死
+
+### 做菜单导航的图标显示
++ 引入

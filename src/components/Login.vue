@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { login_api } from "../api/index";
 export default {
   data() {
     return {
@@ -61,25 +62,39 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate(async valid => {
         if (valid) {
           console.log(this, 999);
           // console.log(this.ruleForm, 777);
           //  如果valid为true   表示校验满足规则  可以发送请求
-          this.$axios.post("/login", this.ruleForm).then(res => {
-            console.log(res, 666);
+          // this.$axios.post("/login", this.ruleForm).then(res => {
+          //   console.log(res, 666);
 
-            //如果登录成功则会转到home界面，否则弹出提示框
-            // console.log(res.status);
-            if (res.data.meta.status == 200) {
-              this.$message.success("恭喜你登录成功");
-              // this.$router.push("/Home");
-            } else {
-              this.$message.error(res.data.meta.msg);
-            }
-          });
-
+          //   //如果登录成功则会转到home界面，否则弹出提示框
+          //   // console.log(res.status);
+          //   if (res.data.meta.status == 200) {
+          //     this.$message.success("恭喜你登录成功");
+          //     this.$router.push("/Home");
+          //     console.log(this.$router, 123456);
+          //   } else {
+          //     this.$message.error(res.data.meta.msg);
+          //   }
+          // });
           // alert("登录成功!");
+
+          //2.二次验证方式
+          const res = await login_api(this.ruleForm);
+          console.log(res);
+          if (res.data.meta.status == 200) {
+            this.$message.success("恭喜你登录成功");
+
+            //将token存储到本地
+            window.sessionStorage.setItem("token", res.data.data.token);
+            this.$router.push("/Home");
+            console.log(this.$router, 123456);
+          } else {
+            this.$message.error(res.data.meta.msg);
+          }
         } else {
           console.log("错误密码!");
           return false;
