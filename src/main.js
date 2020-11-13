@@ -14,8 +14,31 @@ import font from "../src/assets/fonts/iconfont.css";
 // Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false;
+import bread from "../src/api/bread.vue";
+Vue.component("bread", bread);
 Vue.use(ElementUI);
 
+Vue.filter("formats", function() {
+    var yy = new Date().getFullYear();
+    var mm = new Date().getMonth() + 1;
+    var dd = new Date().getDate();
+    var h = new Date()
+
+    .getHours()
+        .toString()
+        .padStart(2, 0);
+    var d = new Date()
+
+    .getMinutes()
+        .toString()
+        .padStart(2, 0);
+    var s = new Date()
+
+    .getSeconds()
+        .toString()
+        .padStart(2, 0);
+    return `${yy}-${mm}-${dd}-${h}:${d}:${s}`;
+});
 new Vue({
     router,
     store,
