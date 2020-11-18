@@ -23,7 +23,7 @@
                 <el-tag
                   @close="rolesDel(scope.row.id, item1.id, scope.row)"
                   closable
-                  >{{ item1.authName }}======{{ item1.id }}</el-tag
+                  >{{ item1.authName }}-{{ item1.id }}</el-tag
                 >
                 <i class="el-icon-caret-right"></i>
               </el-col>
@@ -39,7 +39,7 @@
                       @close="rolesDel(scope.row.id, item2.id, scope.row)"
                       closable
                       type="success"
-                      >{{ item2.authName }}==={{ item2.id }}</el-tag
+                      >{{ item2.authName }}-{{ item2.id }}</el-tag
                     >
                     <i class="el-icon-caret-right"></i>
                   </el-col>
@@ -51,7 +51,7 @@
                       v-for="(item3, index3) in item2.children"
                       :key="index3"
                       @close="rolesDel(scope.row.id, item3.id, scope.row)"
-                      >{{ item3.authName }}======{{ item3.id }}</el-tag
+                      >{{ item3.authName }}-{{ item3.id }}</el-tag
                     >
                   </el-col>
                 </el-row>

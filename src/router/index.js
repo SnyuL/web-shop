@@ -12,6 +12,7 @@ import Users from "../views/users/users";
 
 //  商品
 import Goods from "../views/goods/goods";
+import goodsAdd from "../views/goods/goodsAdd.vue";
 import Params from "../views/goods/params";
 import Categories from "../views/goods/categories";
 
@@ -33,6 +34,7 @@ const routes = [{
             { path: "/roles", component: Roles },
             { path: "/users", component: Users },
             { path: "/goods", component: Goods },
+            { path: "/goodsAdd", component: goodsAdd },
             { path: "/params", component: Params },
             { path: "/categories", component: Categories },
             { path: "/orders", component: Order },
